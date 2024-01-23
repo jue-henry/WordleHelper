@@ -1,11 +1,10 @@
-from math import e
 from WordBank import WordBank
 
 def main():
     wb = WordBank()
     guess_num = 1
     while len(wb.words) > 1:
-        guess = input(f"Guess #{guess_num}: ")  
+        guess = input(f"Guess #{guess_num}: ").lower()
         if not is_valid_word(guess):
             print("Invalid guess. Guesses have to be 5 characters long and can only include alphabet characters.")
             continue
@@ -20,7 +19,6 @@ def main():
         
     if len(wb.words) == 1:
         print(f"Final word: {wb.words[0]}")
-        
     else:
         print("No words match inputted patterns")
 
