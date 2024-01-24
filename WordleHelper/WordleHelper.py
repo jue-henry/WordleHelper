@@ -19,6 +19,8 @@ def main():
         
     if len(wb.words) == 1:
         print(f"Final word: {wb.words[0]}")
+    elif feedback == "GGGGG":
+        print(f"Final word: {guess}")
     else:
         print("No words match inputted patterns")
 
