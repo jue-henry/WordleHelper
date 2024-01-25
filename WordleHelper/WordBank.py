@@ -1,5 +1,3 @@
-from sortedcontainers import SortedList
-
 # points assigned to letters based on frequency of use in English language
 LETTER_RANKINGS = {
     'e': 10,
@@ -33,9 +31,8 @@ LETTER_RANKINGS = {
 class WordBank():
     def __init__(self):
         with open('words.txt') as word_file:
-            word_list = word_file.read().split()
-           
-        self.words = list(reversed(SortedList(word_list, key = WordBank.get_score)))
+            self.words = word_file.read().split()
+            self.words.sort(key= WordBank.get_score, reverse = True)
            
     def process_guess(self, guess: str, feedback: str) -> None:
         try:
@@ -53,10 +50,9 @@ class WordBank():
                         self.words = list(filter(lambda x:not guess[i] in x, self.words))
         print(self.words)
         
-        if len(self.words):
-            print(self.words[0])
+    def get_suggestion(self) -> str:
+        return self.words[0] if len(self.words) > 0 else ""
 
-    @staticmethod
     # method to score words based on frequency of the letters used in the English language
     def get_score(word: str) -> int:
         score = 0

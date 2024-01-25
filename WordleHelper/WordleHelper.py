@@ -4,7 +4,7 @@ def main():
     wb = WordBank()
     guess_num = 1
     while len(wb.words) > 1:
-        guess = input(f"Guess #{guess_num}: ").lower()
+        guess = input(f"Guess #{guess_num} (suggestion: {wb.get_suggestion()}): ").lower()
         if not is_valid_word(guess):
             print("Invalid guess. Guesses have to be 5 characters long and can only include alphabet characters.")
             continue
