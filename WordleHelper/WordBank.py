@@ -34,6 +34,7 @@ class WordBank():
             self.words = word_file.read().split()
             self.words.sort(key= WordBank.get_score, reverse = True)
            
+    # method to remove words that do not match the pattern provided by the guess and feedback strings
     def process_guess(self, guess: str, feedback: str) -> None:
         try:
             self.words.remove(guess)
